@@ -25,7 +25,11 @@ pip3 install requests
 ```
 git clone https://github.com/aaronhackney/cdo-events.git
 ```
-3. Run the script (assumes your data directory exists)
+3. Add your API key into the shell variable `CDO_API_KEY`
+```
+export CDO_API_KEY="YourCDOAPIKeyGoesHere"
+```
+4. Run the script (assumes your data directory exists)
 ```
 cd cdo-events/cdo-events
 python3 get_events.py --prefix AHACK-SNORT-EVENTS --data_dir /tmp/events
