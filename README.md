@@ -8,8 +8,12 @@
 
 ## CLI Arguments
  --prefix (required) is the file name prefix we wish to match. For example, if the scheduled background search filenames that we wish to download all start with IPS-EVENTS then we would pass `--prefix IPS-EVENTS` to the script  
- --data_dir (required) is the directory where we wish to download and store the event files. Example: `--data_dir /tmp/myfiles` or `--data_dir c:\data\myfiles\`
+ --data_dir (required) is the directory where we wish to download and store the event files.  
+ Example: `--data_dir /tmp/myfiles` or `--data_dir c:\data\myfiles\`
 
-## Example Usage:  
+## Help  
+`python3 get_events.py -h`
+
+## Example Usage:
 `python3 get_events.py --prefix AHACK-SNORT-EVENTS --data_dir /tmp/events`
  
