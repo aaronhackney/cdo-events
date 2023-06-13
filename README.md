@@ -19,7 +19,7 @@
 ```
 python3 -m venv  ~/envs/cdo-events
 source ~/envs/cdo-events/bin/activate
-pip install requests
+pip3 install requests
 ```
 2. Clone the git repo
 ```
@@ -28,5 +28,5 @@ git clone https://github.com/aaronhackney/cdo-events.git
 3. Run the script (assumes your data directory exists)
 ```
 cd cdo-events/cdo-events
-python3 get_events.py --prefix AHACK-SNORT-EVENTS --data_dir /tmp/events`
+python3 get_events.py --prefix AHACK-SNORT-EVENTS --data_dir /tmp/events
  
