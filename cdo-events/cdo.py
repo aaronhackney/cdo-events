@@ -44,7 +44,7 @@ class CDOEvents(CDO):
         if api_response.text:
             return api_response.json()
 
-    def download_event_file(self, file_url: str):
+    def download_event_file(self, file_url: str) -> bytes:
         """ Retrieve the given file from the S3 bucket"""
         http_session = requests.Session()
         r = http_session.get(
