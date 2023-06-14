@@ -36,7 +36,7 @@ def main(api_key: str, file_prefix: str, download_dir: str, cdo_region: str):
 
 if __name__ == "__main__":
     import sys
-    parser = argparse.ArgumentParser(prog='get_events.py', description='Tested with python 3.10.4')
+    parser = argparse.ArgumentParser(prog='get_events.py', description='python3 get_events.py --help for arguments')
     parser.add_argument('--prefix', type=str, required=True,
                         help="--prefix abc123 - The filename prefix to match for download")
     parser.add_argument('--data_dir', type=str, required=True,
