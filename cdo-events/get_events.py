@@ -45,11 +45,11 @@ if __name__ == "__main__":
     import sys
     parser = argparse.ArgumentParser(prog='get_events.py', description='Tested with python 3.10.4')
     parser.add_argument('--prefix', type=str, required=True,
-                        help="'--prefix abc123' The filename prefix to match for download")
+                        help="--prefix abc123 - The filename prefix to match for download")
     parser.add_argument('--data_dir', type=str, required=True,
-                        help="'--data_dir /tmp/mydata' The download directory for the event files")
+                        help="--data_dir /tmp/mydata - The download directory for the event files")
     parser.add_argument('--region', type=str, default='us',
-                        help="'--region [region]' us, eu, or apj region where your CDO tenant resides")
+                        help="--region eu - [us, eu, apj] CDO tenant region (default: us)")
     args = parser.parse_args()
     api_key = os.environ.get('CDO_API_KEY')
     main(api_key, args.prefix, args.data_dir, args.region)
