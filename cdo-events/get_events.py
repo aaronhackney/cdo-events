@@ -3,19 +3,14 @@ import gzip
 import shutil
 import logging
 import argparse
-
 from cdo import CDOEvents
 
 
-def unzip_file(file_name, download_dir):
-    """ Given a path and file, unzip the file and delete the original archive """
-    with gzip.open(f"{download_dir}/{file_name}", 'rb') as f_in:
-        with open(f"{download_dir}/{file_name.split('.')[0]}.csv", 'wb') as f_out:
-            shutil.copyfileobj(f_in, f_out)
-            logging.warning(f"Data file {download_dir}/{file_name} unzipped")
-    # Delete the archive once uncompressed
-    os.remove(f"{download_dir}/{file_name}")
-    logging.warning(f"Archive {download_dir}/{file_name} deleted")
+def write_file(compressed_file, file_name, download_dir):
+    """ Given a path and file, unzip the file in memory and save to disk """
+    file_contents = gzip.decompress(compressed_file)
+    with open(f"{download_dir}/{file_name}", 'wb') as f:
+        f.write(file_contents)
 
 
 def download_files(api_key: str, file_prefix: str, download_dir: str, cdo_region: str):
@@ -30,9 +25,7 @@ def download_files(api_key: str, file_prefix: str, download_dir: str, cdo_region
                 logging.warning(f"Downloading events file {event_file['file_name']}...")
                 file_contents = events.download_event_file(
                     event_file['download_url'])
-                open(f"{download_dir}/{event_file['file_name']}", 'wb').write(file_contents)
-                # Unzip the data file and delete the original archive
-                unzip_file(event_file['file_name'], download_dir)
+                write_file(file_contents, f"{event_file['file_name'].split('.')[0]}.csv", download_dir)
             else:
                 logging.warning(f"{download_dir}/{event_file['file_name']} file exists - skipping")
 
